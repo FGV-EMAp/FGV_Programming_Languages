@@ -1,5 +1,6 @@
-Minha string
-Modificar o arquivo
-escrever besteiras
-fazer um monte de coisas
-e ver no que d�
+Olá
+olá, como vai
+
+Então tchau!
+
+um texto	depois de um <tab>
