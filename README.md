@@ -19,5 +19,15 @@
 
 [Outro guia rápido de GIT](http://rogerdudler.github.io/git-guide/index.pt_BR.html)  
 
+[Sincronizando um fork de repositório](https://help.github.com/articles/syncing-a-fork/)
+
 [Tutorial do Jupyter Notebook](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook)
+
+#### Outros recursos  
+
+[Visualização da execução de código](http://www.pythontutor.com/visualize.html#mode=edit)  
+
+[Python Anaconda](https://www.continuum.io/downloads)  
+
+
 
