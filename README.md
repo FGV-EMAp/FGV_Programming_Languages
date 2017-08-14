@@ -19,11 +19,22 @@
 
 [Outro guia rápido de GIT](http://rogerdudler.github.io/git-guide/index.pt_BR.html)  
 
+[Git Cheat Sheet](https://www.git-tower.com/blog/git-cheat-sheet/)
+
 [Configurando o upstream localmente](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
 
 [Sincronizando um fork de repositório com o upstream](https://help.github.com/articles/syncing-a-fork/)
 
 [Tutorial do Jupyter Notebook](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook)
+
+#### Sites de Exercícios
+
+[Project Euler](https://projecteuler.net/)  
+
+[Brilliant](http://brilliant.org/)  
+
+[URI Online Judge](https://www.urionlinejudge.com.br/judge/en/login)  
+
 
 #### Outros recursos  
 
