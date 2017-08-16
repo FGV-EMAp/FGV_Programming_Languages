@@ -25,6 +25,8 @@
 
 [Sincronizando um fork de repositório com o upstream](https://help.github.com/articles/syncing-a-fork/)
 
+[Formatação de strings / output no Python](http://www.python-course.eu/python3_formatted_output.php)
+
 [Tutorial do Jupyter Notebook](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook)
 
 #### Sites de Exercícios
