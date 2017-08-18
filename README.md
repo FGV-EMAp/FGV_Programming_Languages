@@ -19,15 +19,28 @@
 
 [Outro guia rápido de GIT](http://rogerdudler.github.io/git-guide/index.pt_BR.html)  
 
-[Sincronizando um fork de repositório](https://help.github.com/articles/syncing-a-fork/)
+[Git Cheat Sheet](https://www.git-tower.com/blog/git-cheat-sheet/)
+
+[Configurando o upstream localmente](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
+
+[Sincronizando um fork de repositório com o upstream](https://help.github.com/articles/syncing-a-fork/)
+
+[Formatação de strings / output no Python](http://www.python-course.eu/python3_formatted_output.php)
 
 [Tutorial do Jupyter Notebook](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook)
+
+#### Sites de Exercícios
+
+[Project Euler](https://projecteuler.net/)  
+
+[Brilliant](http://brilliant.org/)  
+
+[URI Online Judge](https://www.urionlinejudge.com.br/judge/en/login)  
+
 
 #### Outros recursos  
 
 [Visualização da execução de código](http://www.pythontutor.com/visualize.html#mode=edit)  
 
 [Python Anaconda](https://www.continuum.io/downloads)  
-
-
 
