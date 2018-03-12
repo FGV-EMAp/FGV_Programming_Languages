@@ -5,7 +5,7 @@
 
 #### Material sobre Linguagens de Programação 
 
-[Tendências](https://www.tiobe.com/tiobe-index/) [2](https://medium.freecodecamp.org/best-programming-languages-to-learn-in-2018-ultimate-guide-bfc93e615b35)  
+Tendências  [link1](https://www.tiobe.com/tiobe-index/), [link2](https://medium.freecodecamp.org/best-programming-languages-to-learn-in-2018-ultimate-guide-bfc93e615b35)  
 
 [Histórico das LPs](https://en.wikipedia.org/wiki/History_of_programming_languages)  
 
