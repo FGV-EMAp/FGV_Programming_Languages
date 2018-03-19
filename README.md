@@ -37,6 +37,8 @@ Tendências  [link1](https://www.tiobe.com/tiobe-index/), [link2](https://medium
 
 [URI Online Judge](https://www.urionlinejudge.com.br/judge/en/login)  
 
+[Exercícios em Python](http://joaoventura.net/static/files/python_exercises_book.pdf)
+
 
 #### Outros recursos  
 
