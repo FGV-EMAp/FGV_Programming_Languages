@@ -41,6 +41,8 @@ Configurações:
 
 [Truques com Python](https://hackernoon.com/python-tricks-101-2836251922e0)
 
+[Visualização da execução de código](http://www.pythontutor.com/visualize.html#mode=edit) 
+
 [Formatação de strings / output no Python](http://www.python-course.eu/python3_formatted_output.php)
 
 #### Sites de Exercícios
@@ -55,10 +57,6 @@ Configurações:
 
 
 #### Outros recursos  
-
-[Visualização da execução de código](http://www.pythontutor.com/visualize.html#mode=edit)  
-
-[Python Anaconda](https://www.continuum.io/downloads)  
 
 [Exemplo de Banco de Dados](https://github.com/datacharmer/test_db)
 
