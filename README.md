@@ -34,6 +34,7 @@ Configurações:
 
 [Anaconda](https://www.anaconda.com/download/)
   + [Guia de instalação](https://paulovasconcellos.com.br/como-baixar-anaconda-31fd49c19bd8)
+  + [Primeiros passos](https://opensource.com/article/18/4/getting-started-anaconda-python)
 
 [Tutorial do Jupyter Notebook](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook)
 
