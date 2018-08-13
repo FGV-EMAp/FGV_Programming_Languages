@@ -28,7 +28,7 @@ Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://medium.fr
 Configurações:
   + [Configurando o upstream localmente](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
   + [Sincronizando um fork de repositório com o upstream](https://help.github.com/articles/syncing-a-fork/)
-  + [Desfazendo um Commit](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/)
+  + [Desfazendo um commit](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/)
  
 #### Sobre os Ambientes de Desenvolvimento:
 
