@@ -60,4 +60,5 @@ Configurações:
 #### Outros recursos  
 
 [Exemplo de Banco de Dados](https://github.com/datacharmer/test_db)
+[Making CLI Tools with Python](https://medium.com/dabbler-in-de-stress/make-linux-cli-tools-756f7f7f06b3)
 
