@@ -39,6 +39,7 @@ Configurações:
 [Tutorial do Jupyter Notebook](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook)
 
 #### Tópicos de Linguagem Python:
+[Um tutorial de Python](https://python.swaroopch.com/)
 
 [Truques com Python](https://hackernoon.com/python-tricks-101-2836251922e0)
 
