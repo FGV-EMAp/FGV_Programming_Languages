@@ -11,6 +11,7 @@ Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.
 [Histórico das LPs](https://en.wikipedia.org/wiki/History_of_programming_languages)  
 [Timeline das LPs](https://en.wikipedia.org/wiki/Timeline_of_programming_languages)  
 [Paradigmas de LPs](https://en.m.wikipedia.org/wiki/Programming_paradigm)  
+[O que (não) fazer para aprender a programar?](https://medium.freecodecamp.org/learn-to-code-the-hard-way-65dece5b0005)  
 
 #### Tópicos de Linguagem Python:
 [Um tutorial de Python](https://python.swaroopch.com/)  
