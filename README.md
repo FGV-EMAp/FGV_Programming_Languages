@@ -18,6 +18,7 @@ Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.
 [Truques com Python](https://hackernoon.com/python-tricks-101-2836251922e0)  
 [Visualização da execução de código](http://www.pythontutor.com/visualize.html#mode=edit)  
 [Formatação de strings / output no Python](http://www.python-course.eu/python3_formatted_output.php)  
+[Objetos mutáveis e imutáveis](https://www.pythonforthelab.com/blog/mutable-and-immutable-objects/)  
 
 #### Git, Github e Versionamento:
 
