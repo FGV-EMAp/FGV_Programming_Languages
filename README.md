@@ -32,6 +32,7 @@ Configurações:
   + [Sincronizando um fork de repositório com o upstream](https://help.github.com/articles/syncing-a-fork/)  
   + [Desfazendo um commit](https://blog.github.com/2015-06-08-how-to-undo-almost-anything-with-git/)  
   + [Procurando coisas no repositório](https://www.tygertec.com/find-stuff-git/)  
+  + [Resolvendo conflitos no Git](https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git)
  
 #### Sobre os Ambientes de Desenvolvimento:
 
