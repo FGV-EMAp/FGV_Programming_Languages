@@ -10,14 +10,16 @@
 
 + Qual a ["tipagem"](https://en.wikipedia.org/wiki/Strong_and_weak_typing) da linguagem?
 
-+ Quais são suas principais vantagens e desvantagens, e [domínios principais de aplicação](https://tomassetti.me/best-programming-languages/)?
++ Quais são suas principais vantagens e desvantagens. Mostre também os [domínios principais de aplicação](https://tomassetti.me/best-programming-languages/)?
 
 + Cite os [tipos primitivos de dados](https://en.wikipedia.org/wiki/Primitive_data_type) da linguagem escolhida.
 
++ Mostre como são as estruturas de [controle de fluxo](https://en.wikipedia.org/wiki/Control_flow).  
+
 + Mostre, na linguagem escolhida, o código necessário para as seguintes tarefas:  
   + Olá mundo: O objetivo desse problema é que, ao ser executado, ele nos retorne na tela a frase “Olá
-Mundo”, e seja finalizado com sucesso
-  + Algoritmo de ordenação [quicksort](https://en.wikipedia.org/wiki/Sorting_algorithm#Quicksort)
+Mundo”, e seja finalizado com sucesso;
+  + Algoritmo de ordenação [quicksort](https://en.wikipedia.org/wiki/Sorting_algorithm#Quicksort);
   + Função Ackerman: O programa que resolve o problema deve imprimir o resultado da função de Ackermann simplificada corretamente:
 <p>
 <a href="https://www.codecogs.com/eqnedit.php?latex=A(m,&space;n)&space;=&space;
