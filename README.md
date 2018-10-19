@@ -28,6 +28,12 @@ Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.
 [Curso gratuito de Git e Github](https://www.udemy.com/git-e-github-para-iniciantes/)  
 [Git Cheat Sheet](https://www.git-tower.com/blog/git-cheat-sheet/)  
 
+#### Expressões Regulares
+[Tutorial](https://maykon-oliveira.github.io/regex-tutorial/)
+
+#### Shell Scriot
+[Tutorial](https://www.shellscript.sh/)
+
 Configurações:
   + [Configurando o upstream localmente](https://help.github.com/articles/configuring-a-remote-for-a-fork/)  
   + [Sincronizando um fork de repositório com o upstream](https://help.github.com/articles/syncing-a-fork/)  
