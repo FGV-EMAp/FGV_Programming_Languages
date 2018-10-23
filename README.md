@@ -31,7 +31,7 @@ Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.
 #### Expressões Regulares
 [Tutorial](https://maykon-oliveira.github.io/regex-tutorial/)
 
-#### Shell Scriot
+#### Shell Script
 [Tutorial](https://www.shellscript.sh/)
 
 Configurações:
@@ -46,9 +46,9 @@ Configurações:
 [Anaconda](https://www.anaconda.com/download/)
   + [Guia de instalação](https://paulovasconcellos.com.br/como-baixar-anaconda-31fd49c19bd8)  
   + [Primeiros passos](https://opensource.com/article/18/4/getting-started-anaconda-python)  
-
+[PyCharm](https://www.jetbrains.com/pycharm/)  
 [Tutorial do Jupyter Notebook](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook)  
-
+[SQlite Browser](http://sqlitebrowser.org/)  
 
 
 #### Sites de Exercícios
