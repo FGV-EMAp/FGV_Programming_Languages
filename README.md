@@ -29,7 +29,7 @@ Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.
 [Git Cheat Sheet](https://www.git-tower.com/blog/git-cheat-sheet/)  
 
 #### Expressões Regulares
-[Tutorial](https://maykon-oliveira.github.io/regex-tutorial/)
+[Tutorial](https://maykon-oliveira.github.io/regex-tutorial/)  
 [Diferenças de Implementação](https://unix.stackexchange.com/questions/119905/why-does-my-regular-expression-work-in-x-but-not-in-y)
 
 #### Shell Script
