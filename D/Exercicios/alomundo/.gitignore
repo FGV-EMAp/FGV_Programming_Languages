@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/alomundo
+alomundo.so
+alomundo.dylib
+alomundo.dll
+alomundo.a
+alomundo.lib
+alomundo-test-*
+*.exe
+*.o
+*.obj
+*.lst
