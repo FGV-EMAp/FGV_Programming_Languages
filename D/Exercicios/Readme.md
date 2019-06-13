@@ -54,4 +54,7 @@
         writeln(int.stringof); // int
     }
     ```
-    Execute o codigo acima com `rdmd`.
+    Resolva:
+     - Execute o codigo acima com `rdmd`;
+     - modifique o codigo para imprimir o valor de `c`;
+     - Demonstre em codigo, o porque do valor de `c`;
