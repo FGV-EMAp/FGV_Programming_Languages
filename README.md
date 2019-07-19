@@ -58,6 +58,7 @@ Configurações:
 [Brilliant](http://brilliant.org/)  
 [URI Online Judge](https://www.urionlinejudge.com.br/judge/en/login)  
 [Exercícios em Python](http://joaoventura.net/static/files/python_exercises_book.pdf)  
+[Rosetta Code](http://www.rosettacode.org)
 
 #### Outros recursos  
 
