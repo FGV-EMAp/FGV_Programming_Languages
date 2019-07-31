@@ -264,86 +264,89 @@ done
 The default order for command lookup is functions, followed by built-ins, with scripts and executables last.
 There are three built-ins that you can use to override this order: `command`, `builtin` and `enable`.
 
-command  # removes alias and function lookup. Only built-ins and commands found in the search path are executed
-builtin  # looks up only built-in commands, ignoring functions and commands found in PATH
-enable   # enables and disables shell built-ins
+- `command`  # removes alias and function lookup. Only built-ins and commands found in the search path are executed
+- `builtin`  # looks up only built-in commands, ignoring functions and commands found in PATH
+- `enable`   # enables and disables shell built-ins
 
-eval     # takes arguments and run them through the command-line processing steps all over again
+- `eval`     # takes arguments and run them through the command-line processing steps all over again
 
 
 ### Process Handling.
 
-To suspend a job, type CTRL+Z while it is running. You can also suspend a job with CTRL+Y.
-This is slightly different from CTRL+Z in that the process is only stopped when it attempts to read input from terminal.
-Of course, to interupt a job, type CTRL+C.
+To suspend a job, type `CTRL+Z` while it is running. You can also suspend a job with `CTRL+Y`.
+This is slightly different from `CTRL+Z` in that the process is only stopped when it attempts to read input from terminal.
+Of course, to interupt a job, type `CTRL+C`.
 
-myCommand &  # runs job in the background and prompts back the shell
-jobs         # lists all jobs (use with -l to see associated PID)
-fg           # brings a background job into the foreground
-fg %+        # brings most recently invoked background job
-fg %-        # brings second most recently invoked background job
-fg %N        # brings job number N
-fg %string   # brings job whose command begins with string
-fg %?string  # brings job whose command contains string
-kill -l      # returns a list of all signals on the system, by name and number
-kill PID     # terminates process with specified PID
-ps           # prints a line of information about the current running login shell and any processes running under it
-ps -a        # selects all processes with a tty except session leaders
-trap cmd sig1 sig2  # executes a command when a signal is received by the script
-trap "" sig1 sig2   # ignores that signals
-trap - sig1 sig2    # resets the action taken when the signal is received to the default
-disown <PID|JID>    # removes the process from the list of jobs
-wait                # waits until all background jobs have finished
+- `myCommand &`  # runs job in the background and prompts back the shell
+- `jobs`         # lists all jobs (use with -l to see associated PID)
+- `fg`           # brings a background job into the foreground
+- `fg %+`        # brings most recently invoked background job
+- `fg %-`        # brings second most recently invoked background job
+- `fg %N`        # brings job number N
+- `fg %string`   # brings job whose command begins with string
+- `fg %?string`  # brings job whose command contains string
+- `kill -l`      # returns a list of all signals on the system, by name and number
+- `kill PID`     # terminates process with specified PID
+- `ps`           # prints a line of information about the current running login shell and any processes running under it
+- `ps -a`        # selects all processes with a tty except session leaders
+- `trap cmd sig1 sig2`  # executes a command when a signal is received by the script
+- `trap "" sig1 sig2`   # ignores that signals
+- `trap - sig1 sig2`    # resets the action taken when the signal is received to the default
+- `disown <PID|JID>`    # removes the process from the list of jobs
+- `wait`                # waits until all background jobs have finished
 
 
 ### Tips and Tricks.
 
 #### set an alias
-cd; nano .bash_profile
+`cd; nano .bash_profile`
+```bash
 > alias gentlenode='ssh admin@gentlenode.com -p 3404'  # add your alias in .bash_profile
+```
 
 #### to quickly go to a specific directory
-cd; nano .bashrc
+`cd; nano .bashrc`
+```bash
 > shopt -s cdable_vars
 > export websites="/Users/mac/Documents/websites"
 
 source .bashrc
 cd websites
-
+```
 
 ### Debugging Shell Programs.
 
-bash -n scriptname  # don't run commands; check for syntax errors only
-set -o noexec       # alternative (set option in script)
-bash -v scriptname  # echo commands before running them
-set -o verbose      # alternative (set option in script)
-bash -x scriptname  # echo commands after command-line processing
-set -o xtrace       # alternative (set option in script)
+- `bash -n scriptname`  # don't run commands; check for syntax errors only
+- `set -o noexec`       # alternative (set option in script)
+- `bash -v scriptname`  # echo commands before running them
+- `set -o verbose`      # alternative (set option in script)
+- `bash -x scriptname`  # echo commands after command-line processing
+- `set -o xtrace`       # alternative (set option in script)
 
-trap 'echo $varname' EXIT  # useful when you want to print out the values of variables at the point that your script exits
-
+- `trap 'echo $varname' EXIT`  # useful when you want to print out the values of variables at the point that your script exits
+```bash
 function errtrap {
   es=$?
   echo "ERROR line $1: Command exited with status $es."
 }
-
-trap 'errtrap $LINENO' ERR  # is run whenever a command in the surrounding script or function exists with non-zero status 
-
+```
+- `trap 'errtrap $LINENO' ERR`  # is run whenever a command in the surrounding script or function exists with non-zero status 
+```bash
 function dbgtrap {
   echo "badvar is $badvar"
 }
-
-trap dbgtrap DEBUG  # causes the trap code to be executed before every statement in a function or script
+```
+- `trap dbgtrap DEBUG`  # causes the trap code to be executed before every statement in a function or script
 
 ### section of code in which the problem occurs...
 
-trap - DEBUG  # turn off the DEBUG trap
-
+- `trap - DEBUG`  # turn off the DEBUG trap
+```bash
 function returntrap {
   echo "A return occured"
 }
-
-trap returntrap RETURN  # is executed each time a shell function or a script executed with the . or source commands finishes executing
+```
+- `trap returntrap RETURN`  # is executed each time a shell function or a script executed with the . or source commands finishes executing
 
 ### stdin, o stdout e o stderr
 
@@ -361,9 +364,9 @@ Operadores
 
 Você pode manipular as entradas e saídas com estes três operadores:
 
-- Pipe ( | ): Liga o stdout de um programa ao stdin de outro.
-- Write ( > ): Redireciona o stdout para outro local (um arquivo, por exemplo).
-- Append ( >> ): Anexa o stdout para outro local (um arquivo, por exemplo).
+- Pipe ( `|` ): Liga o stdout de um programa ao stdin de outro.
+- Write ( `>` ): Redireciona o stdout para outro local (um arquivo, por exemplo).
+- Append ( `>>` ): Anexa o stdout para outro local (um arquivo, por exemplo).
 
 Repare que há uma pequena diferença entre o “>” e o “>>”: o primeiro apaga o conteúdo do destino, para então escrever seus dados; o segundo apenas acrescenta as informações às já existentes.
 
@@ -372,28 +375,41 @@ Legal, mas o que eu faço com isto?
 Ora, dá pra fazer muita coisa!!! Se você entendeu o conceito, e se você conhecer alguns comandos úteis (assunto para o próximo artigo), dá para fazer muitas coisas interessantes usando estes operadores e conceitos. Alguns exemplos pra começar:
 
 - Enviar a saída do comando ls para o arquivo “lista.txt”:
+```bash
 $ ls > lista.txt
+```
 - Semelhante ao comando acima, mas preservando o conteúdo original do arquivo “lista.txt”:
+```bash
 $ ls >> lista.txt
+```
 - Obter uma lista do tamanho (em MiB) ocupado por cada arquivo na pasta atual e subpastas, e classificar a relação do maior para o menor:
+```bash
 $ du -m | sort -nr
+```
 
 Em todos estes casos, trabalhamos apenas com stdout e stdin. Para trabalhar com a stderr, a coisa fica assim (repare no “2″):
 
 - Remover todos os arquivos em /home, listando um por um, e fazer log dos erros no arquivo /tmp/erros.txt:
+```bash
 $ rm -rfv /home 2> /tmp/erros.txt
+```
 - Mesmo caso acima, mas as mensagens de informação irão para o arquivo /tmp/info.txt:
+```bash
 $ rm -rfv /home 1> /tmp/info.txt 2> /tmp/erros.txt
+```
 - Outra abordagem do mesmo problema, mas desta vez, tudo irá para o arquivo /tmp/info.txt:
+```bash
 $ rm -rfv /home 1> /tmp/info.txt 2>&1
+```
 
 Ponha tudo numa linha só
 
 O nosso amigo pipe (aquele “caninho” vertical: | ) pode ser uma tremenda mão na roda em alguns casos.
 
 Suponha que você está com sua partição /home cheia, e você quer descobrir quem são os 10 usuários mais “fominhas”, classificado do maior para o menor, com números em megabytes, e ainda por cima, quer mandar esta relação por e-mail. Não existe comando que faça tudo isto numa tacada só; o jeito é concatenar a saída de um programa (stdout) com a entrada de outro (stdin):
-
+```bash
 du -m --max-depth=1 /home | sort -rn | head -n 11 | mail -s "Usuários fominhas" meu_email@provedor.com.br
+```
 
 Não vou explicar parâmetro por parâmetro, senão isto aqui vai ficar enorme. Mas resumindo, a primeira parte (du -m --max-depth=1 /home) obtém uma lista com os totais ocupados por cada pasta dentro do /home, sem exibir as subpastas, e mostra os totais em megabytes; a segunda parte (sort -rn) classifica a relação obtida em ordem reversa, e tratando números como números (não como texto, que é o padrão); a terceira parte (head -n 11) pega as 11 primeiras linhas desta relação (11 porque a primeira vai ser o total geral); e por fim, o último comando pega esta relação e a manda por e-mail (você precisa ter o envio de e-mails instalado e configurado).
 
@@ -407,18 +423,18 @@ Comandos úteis
 
 Agora que você entendeu o conceito básico (sim, há muito mais conteúdo pra quem quer se aprofundar...), aí vão vários comandos legais para se trabalhar desta forma. Alguns deles vão merecer destaque especial aqui no Guia, pois são extremamente úteis em vários cenários.
 
-cat / tac: o primeiro abre um arquivo e o mostra na tela (stdout); o segundo faz o mesmo, mas mostra o arquivo de trás para frente.
-sort: classifica a entrada em ordem alfabética ou numérica (-n), crescente ou descrescente (-r).
-nl: numera as linhas.
-wc: conta os caracteres (-c), as palavras (-w) ou as linhas (-l).
-head: mostra as primeiras linhas. O número pode ser definido com -n.
-tail: mostra as últimas linhas. O número pode ser definido com -n.
-grep / egrep / fgrep: pesquisador de expressões regulares, usado para encontrar padrões dentro de um texto. Este aqui vai merecer atenção especial no Guia.
-cut: demilita a entrada por um separador (-d), e permite pegar campos específicos (-f). Pense nele como o seu amigo para quando você tiver um arquivo com linhas no estilo "dado1:dado2:dado3", e você precisar pegar apenas um ou alguns destes dados, que no caso, estão delimitados por dois pontos.
-awk: semelhante ao acima, porém muito mais poderoso. Quando eu aprender a trabalhar com ele direito, eu faço um artigo no Guia :)
-tr: substitui ou deleta caracteres, e também pode deletar repetidos.
-sed: equivalente ao comando acima, porém muito mais flexível e poderoso. Este aqui vai merecer atenção especial no Guia.
-tee: copia a saída para um arquivo.
+- `cat` / `tac`: o primeiro abre um arquivo e o mostra na tela (stdout); o segundo faz o mesmo, mas mostra o arquivo de trás para frente.
+- `sort`: classifica a entrada em ordem alfabética ou numérica (-n), crescente ou descrescente (-r).
+- `nl`: numera as linhas.
+- `wc`: conta os caracteres (-c), as palavras (-w) ou as linhas (-l).
+- `head`: mostra as primeiras linhas. O número pode ser definido com -n.
+- `tail`: mostra as últimas linhas. O número pode ser definido com -n.
+- `grep` / `egrep` / `fgrep`: pesquisador de expressões regulares, usado para encontrar padrões dentro de um texto. Este aqui vai merecer atenção especial no Guia.
+- `cut`: demilita a entrada por um separador (-d), e permite pegar campos específicos (-f). Pense nele como o seu amigo para quando você tiver um arquivo com linhas no estilo "dado1:dado2:dado3", e você precisar pegar apenas um ou alguns destes dados, que no caso, estão delimitados por dois pontos.
+- `awk`: semelhante ao acima, porém muito mais poderoso. Quando eu aprender a trabalhar com ele direito, eu faço um artigo no Guia :)
+- `tr`: substitui ou deleta caracteres, e também pode deletar repetidos.
+- `sed`: equivalente ao comando acima, porém muito mais flexível e poderoso. Este aqui vai merecer atenção especial no Guia.
+- `tee`: copia a saída para um arquivo.
 Alguns comandos podem ficar meio obscuros agora; eu pretendo voltar neles quando for falar de shell scripts, mas antes, pretendo falar sobre expressões regulares (base do comando grep), pois este cara é importante. Sugiro que você pratique estes comandos com alguns arquivos de teste e leia seus respectivos manuais (man nomedocomando), para ir pegando o jeito. Tem quem ache que aprender este tipo de coisa é bobagem, mas eu garanto, estes comandos podem ser a sua salvação em muitos casos, especialmente o grep.
 
 Semana que vem tem mais. Por ora, faça seus comentários abaixo, se desejar, ou acesse o Fórum do Guia para tirar dúvidas com os outros participantes. Até mais!
@@ -427,7 +443,7 @@ Continuando a série, vamos tratar de um tema muito útil no ambiente Linux, e q
 
 Uma expressão regular (também conhecida por regex) nada mais é do que a especificação de um padrão de texto, algo que segue uma determinada regra de formato. Escrevendo-se a expressão correta, você pode encontrar fragmentos de texto dentro de um arquivo, por exemplo. O como fazer isto vai explicado abaixo:
 
-grep: utilitário de busca de regex
+- `grep`: utilitário de busca de regex
 
 A maioria (se não for todas) das distribuições Linux incluem o grep, que é um buscador de regex.
 
@@ -443,13 +459,13 @@ Primeira coisa, entenda que há caracteres e metacaracteres numa regex. Os carac
 
 Aí vai uma listinha com alguns dos metacaracteres mais usados:
 
-^ : começa com
-$ : término de linha
-. : qualquer caracter
-[] : relação de valores possíveis para um caracter. Você pode especificar uma lista ( [abcde] ), uma faixa ( [0-9] ), ou várias faixas ( [a-zA-Z0-9] ).
-\{\} : especifica quantas vezes o caracter pode se repetir. Por exemplo: “{2}” (duas vezes), “{2,5}” (duas a cinco vezes), “{2,}” (duas ou mais vezes).
-| : operador lógico ou
-.* : operador lógico e
-Olhe esta “linguiça”, por exemplo: [0-9]\{3\}\.[0-9]\{3\}\.[0-9]\{3\}-[0-9]\{2\}. Adivinha com o que ela casa? Com um número de CPF que esteja formatado com pontos e traço. Leia a expressão com calma que você vai enxergar isto =)
+- `^` : começa com
+- `$` : término de linha
+- `.` : qualquer caracter
+- `[]` : relação de valores possíveis para um caracter. Você pode especificar uma lista ( `[abcde]` ), uma faixa ( `[0-9]` ), ou várias faixas ( `[a-zA-Z0-9]` ).
+- `\{\}` : especifica quantas vezes o caracter pode se repetir. Por exemplo: “{2}” (duas vezes), “{2,5}” (duas a cinco vezes), “{2,}” (duas ou mais vezes).
+- `|` : operador lógico ou
+- `.*` : operador lógico e
+Olhe esta “linguiça”, por exemplo: `[0-9]\{3\}\.[0-9]\{3\}\.[0-9]\{3\}-[0-9]\{2\}`. Adivinha com o que ela casa? Com um número de CPF que esteja formatado com pontos e traço. Leia a expressão com calma que você vai enxergar isto =)
 
-Existe um outro utilitário, o egrep, que é uma versão extendida do grep. A sintaxe de uso é a mesma. Uma coisa legal dele é dispensar o escape para certos metacaracteres, como o “{}”, o que tornaria esta mesma expressão um pouquinho mais curta: [0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}. Note que o ponto ainda precisou ser escapado, pois a intenção é tratá-lo apenas como ponto mesmo.
+Existe um outro utilitário, o egrep, que é uma versão extendida do grep. A sintaxe de uso é a mesma. Uma coisa legal dele é dispensar o escape para certos metacaracteres, como o “{}”, o que tornaria esta mesma expressão um pouquinho mais curta: `[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}`. Note que o ponto ainda precisou ser escapado, pois a intenção é tratá-lo apenas como ponto mesmo.
