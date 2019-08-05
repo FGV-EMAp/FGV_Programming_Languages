@@ -5,6 +5,10 @@ O objetivo da disciplina de Linguagens de Programação é apresentá-las, compa
 
 ### Recursos Adicionais:
 
+#### Ambiente online para entrega de exercícios
+- Para as tarefas mais curtas na linguagem Python, Incluido os Quizzes, utilizaremos o [Repl.it](https://repl.it/teacher/classrooms/141262).
+- Para projetos mais complexos usaremos [Google Classroom](https://classroom.google.com/u/0/c/MzcyMDcwMTk1MTJa), para publicação das tarefas e as entregas serão feitas via Github.
+
 #### Sobre Linguagens de Programação: 
 
 Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages), [3](https://medium.freecodecamp.org/best-programming-languages-to-learn-in-2018-ultimate-guide-bfc93e615b35), [4](https://www.edureka.co/blog/python-interesting-facts-you-need-to-know/)  
