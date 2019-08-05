@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/calculator
+calculator.so
+calculator.dylib
+calculator.dll
+calculator.a
+calculator.lib
+calculator-test-*
+*.exe
+*.o
+*.obj
+*.lst
