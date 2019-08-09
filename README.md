@@ -4,7 +4,7 @@ Ementa:
 O objetivo da disciplina de Linguagens de Programação é apresentá-las, comparando os vários paradigmas, e promovendo o desenvolvimento da maestria em uma linguagem multiparadigmática, além de fundamentos de outras linguagens relevantes para o ecossistema de um matemático aplicado ou cientista de dados. Também serão apresentados os processos de versionamento e teste, característicos do desenvolvimento de software.
 
 ### Recursos Adicionais:
-Abaixo estão alguns links para uso geral.
+Abaixo estão listados alguns links para uso geral.
 
 #### Comunicação geral
 - [hackmd do Curso](https://hackmd.io/HN90LqA_T1e1cRGIdnd3Sg)
