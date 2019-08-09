@@ -9,6 +9,7 @@
     ```D
     import std.stdio: writeln, writefln;
     ```
+    Imports podem aparecer em qualquer parte do codigo, ate mesmo dentro de funçoes. Como no Python, a notaçao de ponto no import corresponde a diretorios dentro do diretorio de trabalho do D. Por exemplo: `my.cat` corresponde ao seguinte modulo D: `my/cat.d`
 1. *Tipos basicos:*
 
     |type|size|
