@@ -31,6 +31,10 @@ Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.
 [Objetos mutáveis e imutáveis](https://www.pythonforthelab.com/blog/mutable-and-immutable-objects/)  
 
 #### Git, Github e Versionamento:
+Atualizando o editor padrão do Git bash (para usuários Windows):
+```
+git config --global core.editor "nano.exe"
+```
 
 - [Tutorial de Git](https://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git)
 - [Ambiente Interativo](https://learngitbranching.js.org/)
