@@ -25,3 +25,7 @@ class App:
 
 App()
 ```
+
+## Exercicio:
+
+Modifique o codigo acima para desenhar em ordem os numeros primos de *1* a *n*, em uma tabela de acordo com o algoritmo conhecido como crivo de Eratostenes. Primeiro desenhe uma tabela quadrada com os numeros de um a 100 e depois va apagando os nao-primos.
