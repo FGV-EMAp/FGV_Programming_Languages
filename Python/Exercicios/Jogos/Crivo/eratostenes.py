@@ -23,7 +23,7 @@ class App:
     def draw(self):
         pyxel.cls(0)
         pyxel.text(20, 3, "Numeros primos", 10)
-        pyxel.rectb(120, 110, 20, 10, 9)
+        pyxel.rectb(20,10,102, 102, 9)
         self.draw_full_table()
         # pyxel.text(22, 22, "2", pyxel.frame_count % 16)
 
