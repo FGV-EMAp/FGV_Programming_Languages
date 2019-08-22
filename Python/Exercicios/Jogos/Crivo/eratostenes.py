@@ -41,8 +41,9 @@ class App:
         pyxel.text(20, 3, "Numeros primos", 10)
         pyxel.rectb(20,10,102, 102, 9)
         self.draw_full_table()
-        if pyxel.frame_count % 50 == 0:
+        if pyxel.frame_count % 10 == 0 and len(self.primos) > 0:
             self.pinta_primo(choice(self.primos))
+
     # pyxel.text(22, 22, "2", pyxel.frame_count % 16)
 
 
