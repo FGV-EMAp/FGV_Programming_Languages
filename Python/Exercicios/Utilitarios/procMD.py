@@ -3,15 +3,18 @@ import pygments
 import os
 from pygments.lexers import guess_lexer
 
+
 class ProcessaTexto:
     """
     Processador de markdown para inserção de código.
     """
+
     def __init__(self, caminho):
         self.max_linhas = 15
-        self.regex = "\{([/\w+]+.*\w+.py)\}"
+        self.regex = "(```[\w\W]*\s```)\n(\[Full *source\]\([/*\w\W]+\))"  # Antigo: "\{([/\w+]+.*\w+.py)\}"
         self.caminho = caminho
         self.codigo = None
+        self.caminho_codigo = None
         self.caminho_base = os.path.split(self.caminho)[0]
         self.linhas = []
         self.marcações = []
@@ -23,8 +26,8 @@ class ProcessaTexto:
         for l in self.linhas:
             m = self.encontra_referencias(l)
             if m:
-                _, ling = self.carrega_codigo(m[0])
-        self.insere_codigo(codigo=self.codigo,linguagem=ling)
+                _, ling = self.carrega_codigo(m[2])
+                self.insere_codigo(codigo=self.codigo, linguagem=ling)
 
     def le_texto(self):
         with open(self.caminho, 'r') as f:
@@ -54,16 +57,13 @@ class ProcessaTexto:
         linhas = linhas[:self.max_linhas]
         codigo = '\n'.join(linhas)
 
-        codigo = '```{}\n'.format(linguagem)+ codigo +'\n```'
+        codigo = '```{}\n'.format(linguagem) + codigo + '\n```'
         for m in self.marcações:
             self.linhas[m] = re.sub(self.regex, codigo, self.linhas[m])
         with open(self.caminho, 'w') as f:
             f.writelines(self.linhas)
 
 
-
 if __name__ == "__main__":
     P = ProcessaTexto('../Jogos/README.md')
     print(P.linhas)
-
-

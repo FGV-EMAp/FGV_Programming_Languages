@@ -46,6 +46,4 @@ class App:
 
     # pyxel.text(22, 22, "2", pyxel.frame_count % 16)
 
-
-
 App()
