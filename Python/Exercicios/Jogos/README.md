@@ -34,4 +34,4 @@ Modifique o codigo acima para desenhar em ordem os numeros primos de *1* a *n*, 
 
 ```
 ```
-[Full code](../Jogos/Crivo/eratostenes.py)
+[Full source](../Jogos/Crivo/eratostenes.py)

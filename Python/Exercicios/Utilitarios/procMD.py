@@ -11,39 +11,45 @@ class ProcessaTexto:
 
     def __init__(self, caminho):
         self.max_linhas = 15
-        self.regex = "(```[\w\W]*\s```)\n(\[Full *source\]\([/*\w\W]+\))"  # Antigo: "\{([/\w+]+.*\w+.py)\}"
+        self.regex = re.compile("(```[\w\W]*\s```)\n(\[Full *source\]\([/*\w\W]+\)+)")  # Antigo: "\{([/\w+]+.*\w+.py)\}"
         self.caminho = caminho
         self.codigo = None
         self.caminho_codigo = None
         self.caminho_base = os.path.split(self.caminho)[0]
-        self.linhas = []
+        self.markdown = ""
         self.marcações = []
-        self.nlinhas = len(self.linhas)
+        # self.nlinhas = len(self.linhas)
         self.__processa()
 
     def __processa(self):
-        self.linhas = self.le_texto()
-        for l in self.linhas:
-            m = self.encontra_referencias(l)
-            if m:
-                _, ling = self.carrega_codigo(m[2])
-                self.insere_codigo(codigo=self.codigo, linguagem=ling)
+        self.markdown = self.le_texto()
+        refs = self.encontra_referencias(self.markdown)
+        if refs:
+            for pos, r in refs.items():
+                cam = re.findall('source]\(([/\w\W+/]+)\)', r[1])[0]
+                _, ling = self.carrega_codigo(cam)
+                self.insere_codigo(posiçao=pos, codigo=self.codigo, linguagem=ling, caminho=cam)
 
     def le_texto(self):
         with open(self.caminho, 'r') as f:
-            linhas = f.readlines()
-        return linhas
+            texto = f.read()
+        return texto
 
-    def encontra_referencias(self, linha):
+    def encontra_referencias(self, texto):
         """
-        Dada a linha returna marcações se existirem
-        :param linha:  linha a ser analisada
+        Dada o texto returna marcações se existirem
+        :param texto:  texto a ser analisada
         :return: lista com marcações.
         """
-        marcações = re.findall(self.regex, linha)
+        marcações = re.findall(self.regex, texto)
+        print(len(marcações))
+        refs = {}
+        pos = 0
         if marcações:
-            self.marcações.append(self.linhas.index(linha))
-        return marcações
+            for m in marcações:
+                refs[texto[pos:].index(m[0])] = m
+                pos += len(m)
+        return refs
 
     def carrega_codigo(self, caminho):
         with open(os.path.join(self.caminho_base, caminho), 'r') as f:
@@ -52,18 +58,18 @@ class ProcessaTexto:
         linguagem = guess_lexer(texto).name
         return texto, linguagem
 
-    def insere_codigo(self, codigo, linguagem):
+    def insere_codigo(self, posiçao, codigo, linguagem, caminho):
         linhas = codigo.split('\n')
         linhas = linhas[:self.max_linhas]
         codigo = '\n'.join(linhas)
 
-        codigo = '```{}\n'.format(linguagem) + codigo + '\n```'
-        for m in self.marcações:
-            self.linhas[m] = re.sub(self.regex, codigo, self.linhas[m])
-        with open(self.caminho, 'w') as f:
-            f.writelines(self.linhas)
+        codigo = '```{}\n'.format(linguagem) + codigo + '\n```\n[Full source]({})'.format(caminho)
+        self.markdown = re.sub(self.regex, codigo, self.markdown)
+        print(self.markdown)
+        # with open(self.caminho, 'w') as f:
+        #     f.writelines(self.markdown)
 
 
 if __name__ == "__main__":
     P = ProcessaTexto('../Jogos/README.md')
-    print(P.linhas)
+    # print(P.codigo)
