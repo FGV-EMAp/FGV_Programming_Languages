@@ -19,6 +19,7 @@ Abaixo estão listados alguns links.
  [![Revolution OS](http://img.youtube.com/vi/7LGKgdWtrqI/0.jpg)](http://www.youtube.com/watch?v=7LGKgdWtrqI "") 
  
  Historia do movimento opensource e do sistema operacional Linux
+ 
 [![The secret history of hacking](http://img.youtube.com/vi/SbeoxPPPCyA/0.jpg)](http://www.youtube.com/watch?v=SbeoxPPPCyA "")
 
 Documentario sobre a origem da cultura hacker.
