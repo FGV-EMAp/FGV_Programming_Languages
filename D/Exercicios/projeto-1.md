@@ -10,4 +10,4 @@ reimplemente em **D**.
 
 ### Bonus:
 1. Permitir o uso de estratégias escritas em **Python** com o simulador em **D**.
-2. Integrar visualização em tempo real similar ao que p liveplots oferece no simulador Python.
+2. Integrar visualização em tempo real similar ao que o [liveplots](https://github.com/fccoelho/liveplots) oferece no simulador Python.

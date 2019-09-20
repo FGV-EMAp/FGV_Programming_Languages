@@ -4,7 +4,6 @@ finds all tasks which are not implemented in that language.
 """
 from functools import partial
 from operator import itemgetter
- 
 import requests
  
 URL = 'http://www.rosettacode.org/mw/api.php'

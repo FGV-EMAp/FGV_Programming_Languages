@@ -15,6 +15,14 @@ Abaixo estão listados alguns links.
 #### Ambientes computacionais online gratuitos
 - Ambiente de Programação Matemática: [Cocalc](https://cocalc.com). Inclui Sage, Python, R, Shell linux, Jupyter, etc.
 
+#### Filmes sobre Historia da computaçao
+ [![Revolution OS](http://img.youtube.com/vi/7LGKgdWtrqI/0.jpg)](http://www.youtube.com/watch?v=7LGKgdWtrqI "") 
+ 
+ Historia do movimento opensource e do sistema operacional Linux
+ 
+[![The secret history of hacking](http://img.youtube.com/vi/SbeoxPPPCyA/0.jpg)](http://www.youtube.com/watch?v=SbeoxPPPCyA "")
+
+Documentario sobre a origem da cultura hacker.
 #### Sobre Linguagens de Programação: 
 
 Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages), [3](https://medium.freecodecamp.org/best-programming-languages-to-learn-in-2018-ultimate-guide-bfc93e615b35), [4](https://www.edureka.co/blog/python-interesting-facts-you-need-to-know/)  
