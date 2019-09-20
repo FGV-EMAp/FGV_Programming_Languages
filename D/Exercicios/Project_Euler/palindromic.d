@@ -1,3 +1,5 @@
+module palindromic;
+
 import std.stdio;
 import std.string;
 import std.conv;
@@ -16,7 +18,7 @@ void main(string[] args){
     foreach_reverse(p; candidates.sort()){
         string n = to!string(p);
         if (n == n.retro.text){
-            writeln("Maior palíndroomo: ", n);
+            writeln("Maior palíndromo: ", n);
             break;
         }
     }
