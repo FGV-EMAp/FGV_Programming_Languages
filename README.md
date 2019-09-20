@@ -38,6 +38,10 @@ Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.
 [Formatação de strings / output no Python](http://www.python-course.eu/python3_formatted_output.php)  
 [Objetos mutáveis e imutáveis](https://www.pythonforthelab.com/blog/mutable-and-immutable-objects/)  
 
+#### Linguagem D:
+[![Aprenda D em uma hora](http://img.youtube.com/vi/rwZFTnf9bDU/0.jpg)](http://www.youtube.com/watch?v=rwZFTnf9bDU "")
+Domine o basico de D em uma hora!
+
 #### Git, Github e Versionamento:
 Atualizando o editor padrão do Git bash (para usuários Windows):
 ```
