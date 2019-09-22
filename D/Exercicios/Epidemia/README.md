@@ -95,3 +95,5 @@ import mir.ndslice;
 import mir.ndslice.fuse;
 import plt = matplotlibd.pyplot;
 ```
+
+Após implementar a versão em D, usando matplotlibd para os gráficos, porque não compilar o módulo de forma que possa ser importado por um script Python? Para isso temos à nossa disposição o pacote PyD.
