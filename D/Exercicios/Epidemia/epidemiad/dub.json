@@ -5,7 +5,8 @@
 	"copyright": "Copyright © 2019, Flávio Codeco Coelho",
 	"dependencies": {
 		"mir": "~>3.2.0",
-		"mir-algorithm": "~>3.5.5",
+		"mir-algorithm": "~>3.5.6",
+		"mir-core": "~>1.0.2",
 		"mir-random": "~>2.2.6",
 		"pyd": "~>0.12.0"
 	},
@@ -13,9 +14,9 @@
 	"license": "MIT",
 	"name": "epidemiad",
 	"sourcePaths": [
-        "source/"
-    ],
+		"source/"
+	],
 	"subConfigurations": {
-            "pyd": "python37"
-    }
+		"pyd": "python37"
+	}
 }
