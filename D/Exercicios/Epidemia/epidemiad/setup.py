@@ -1,18 +1,18 @@
 from pyd.support import setup, Extension
+import os, json
 
-projName = "Epidemiad"
+f = os.popen('dub describe')
+build_pars = json.loads(f.read())['targets'][0]['buildSettings']
+
+projName = "epidemiad"
 
 setup(
     name=projName,
     version='0.1',
     ext_modules=[
         Extension(projName, ['source/models.d'],
-                  include_dirs=['~/.dub/packages/mir-random-2.2.6/mir-random/source',
-                                '~/.dub/packages/mir-core-1.0.2/mir-core/source/',
-                                '~/.dub/packages/mir-3.2.0/mir/source/',
-                                '~/.dub/packages/mir-linux-kernel-1.0.1/mir-linux-kernel/source/',
-                                '~/.dub/packages/mir-algorithm-3.5.5/mir-algorithm/source/'
-                                ],
+                  include_dirs=build_pars['importPaths'],
+                  extra_link_args=build_pars['linkerFiles'],
                   # extra_compile_args=['-w'],
                   build_deimos=True,
                   d_lump=True

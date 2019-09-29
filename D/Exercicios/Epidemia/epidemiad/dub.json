@@ -16,6 +16,8 @@
 	"sourcePaths": [
 		"source/"
 	],
+	"target": "library",
+	"buildOptions": ["inline", "optimize"],
 	"subConfigurations": {
 		"pyd": "python37"
 	}

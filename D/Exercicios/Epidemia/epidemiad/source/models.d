@@ -1,3 +1,8 @@
+/**
+Continuous time  Markov model implementing an SIR epidemic Model
+Author: Flávio Codeço Coelho<fccoelho@gmail.com>
+*/
+
 module models;
 
 import std.stdio;
@@ -83,7 +88,10 @@ extern (C) void PydMain()
 {
     module_init();
 
-    wrap_class!(SIR, Property!(SIR.initialize), Property!(SIR.run),
-            Init!(uint, double, double))();
+    wrap_class!(
+        SIR,
+        Def!(SIR.initialize),
+        Def!(SIR.run),
+        Init!(uint, double, double))();
 
 }
