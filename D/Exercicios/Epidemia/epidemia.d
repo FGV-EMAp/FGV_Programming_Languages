@@ -63,7 +63,7 @@ void main()
 {
     double beta = 0.1;
     double gam = 1. / 21;
-    int N = 1500;
+    int N = 150000;
     bool constant = false;
     int I0 = 2;
     double tf = 365.0;
