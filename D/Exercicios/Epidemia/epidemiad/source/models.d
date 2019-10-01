@@ -113,22 +113,51 @@ class SIR_Dem : SIR
         auto rng = Random(seed);
         auto urv = uniformVar!double(0.0, 1.0);
         double[] dts = [0];
-        double R, U, pinf, pbirth, pds, pdi;
+        double R, U, pinf, prec, pbirth, pds, pdi;
         while ((this.ts[$ - 1] < tf) & (this.I[$ - 1] > 0))
         {
             U = urv(rng);
             R = this.alpha * this.N + this.beta * this.S[$ - 1] * this.I[$ - 1]
                 / this.N + this.gam * this.I[$ - 1] + this.alpha * this.S[$ - 1]
                 + this.alpha * this.I[$ - 1];
-            pbirth = this.alpha*this.N/R;  /// Probability of the next event being a birth (S -> S+1)
-            pinf = ((this.beta/this.N)*this.S[$-1]*this.I[$-1])/R; /// Probability of next event being an infection
-            prec = this.gam*this.I[$-1]/R;  /// Probability of the next event being a recovery (I -> I-1)
-            pds = this.alpha*this.S[$-1]/R; /// Probability of the next event being a death of an S (S -> S-1)
-            pdi = this.alpha*this.I[$-1]/R;
-            ev = multinomial(1, [pbirth, pinf, prec, pds, pdi]).nonzero()
+            pbirth = this.alpha * this.N / R; /// Probability of the next event being a birth (S -> S+1)
+            pinf = ((this.beta / this.N) * this.S[$ - 1] * this.I[$ - 1]) / R; /// Probability of next event being an infection
+            prec = this.gam * this.I[$ - 1] / R; /// Probability of the next event being a recovery (I -> I-1)
+            pds = this.alpha * this.S[$ - 1] / R; /// Probability of the next event being a death of an S (S -> S-1)
+            pdi = this.alpha * this.I[$ - 1] / R; /// Probability of the next event being a death of an I (I -> I-1)
+            ev = multinomial(1, [pbirth, pinf, prec, pds, pdi]).nonzero();
             auto erv = exponentialVar!double(1.0 / R);
             double dt = erv(rng);
+            if (ev == 0)
+            { ///event is a birth
+                this.S ~= this.S[$ - 1] + 1;
+                this.I ~= this.I[$ - 1];
+            }
+            else if (ev == 1)
+            { ///  event is an infection
+                this.S ~= this.S[$ - 1] - 1;
+                this.I ~= this.I[$ - 1] + 1;
+            }
+            else if (ev == 2)
+            { /// event is a recovery
+                this.S ~= this.S[$ - 1];
+                this.I ~= this.I[$ - 1] - 1;
+            }
+            else if (ev == 3)
+            { /// event is a susceptible death
+                this.S ~= this.S[$ - 1] - 1;
+                this.I ~= this.I[$ - 1];
+            }
+            else if (ev == 4)
+            { /// next event is a infectious death
+                this.S ~= this.S[$ - 1];
+                this.I ~= this.I[$ - 1] - 1;
+            }
+            this.ts ~= this.ts[$ - 1] + dt;
+            dts ~= dt;
         }
+        auto res = tuple(this.ts, this.S, this.I, dts);
+        return res;
     }
 }
 
@@ -144,45 +173,43 @@ class SIR_Dem : SIR
    C.S. David, The computer generation of multinomial random variates,
    Comp. Stat. Data Anal. 16 (1993) 205-217
 */
-void multinomialVar (const gsl_rng * r, const size_t K,
-                     const unsigned int N, const double p[], unsigned int n[])
+void multinomialVar(const uint N, const double[] p, ulong[] n)
 {
-  size_t k;
-  double norm = 0.0;
-  double sum_p = 0.0;
+    uint k;
+    auto K = p.length;
+    double norm = 0.0;
+    double sum_p = 0.0;
+    auto rng = Random(12784);
+    uint sum_n = 0;
 
-  uint sum_n = 0;
-
-  /* p[k] may contain non-negative weights that do not sum to 1.0.
+    /* p[k] may contain non-negative weights that do not sum to 1.0.
    * Even a probability distribution will not exactly sum to 1.0
    * due to rounding errors.
    */
 
-  for (k = 0; k < K; k++)
+    for (k = 0; k < K; k++)
     {
-      norm += p[k];
+        norm += p[k];
     }
 
-  for (k = 0; k < K; k++)
+    for (k = 0; k < K; k++)
     {
-      if (p[k] > 0.0)
+        if (p[k] > 0.0)
         {
-          n[k] = gsl_ran_binomial (r, p[k] / (norm - sum_p), N - sum_n);
+            auto rv = binomialVar(N - sum_n, p[k] / (norm - sum_p));
+            n[k] = rv(rng);
+
         }
-      else
+        else
         {
-          n[k] = 0;
+            n[k] = 0;
         }
 
-      sum_p += p[k];
-      sum_n += n[k];
+        sum_p += p[k];
+        sum_n += n[k];
     }
 
 }
-
-
-
-
 
 /**
 * Python wrapper
