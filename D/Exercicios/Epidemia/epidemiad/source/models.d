@@ -9,10 +9,13 @@ module models;
 import std.stdio;
 import std.math;
 import std.file;
+import std.range : enumerate;
+import std.algorithm.searching;
 import std.typecons : tuple, Tuple;
 import core.exception : RangeError;
 import mir.random;
-import mir.random.variable : uniformVar, exponentialVar, binomialVar;
+import mir.random.variable : uniformVar, exponentialVar;
+import multinomial: multinomialVar;
 import mir.ndslice;
 import mir.ndslice.fuse;
 import pyd.pyd;
@@ -125,7 +128,7 @@ class SIR_Dem : SIR
             prec = this.gam * this.I[$ - 1] / R; /// Probability of the next event being a recovery (I -> I-1)
             pds = this.alpha * this.S[$ - 1] / R; /// Probability of the next event being a death of an S (S -> S-1)
             pdi = this.alpha * this.I[$ - 1] / R; /// Probability of the next event being a death of an I (I -> I-1)
-            ev = multinomial(1, [pbirth, pinf, prec, pds, pdi]).nonzero();
+            auto ev = multinomialVar(1, [pbirth, pinf, prec, pds, pdi]).enumerate.maxElement!"a.value"[0];
             auto erv = exponentialVar!double(1.0 / R);
             double dt = erv(rng);
             if (ev == 0)
@@ -161,55 +164,7 @@ class SIR_Dem : SIR
     }
 }
 
-/** The multinomial distribution has the form
-                                      N!           n_1  n_2      n_K
-   prob(n_1, n_2, ... n_K) = -------------------- p_1  p_2  ... p_K
-                             (n_1! n_2! ... n_K!)
-   where n_1, n_2, ... n_K are nonnegative integers, sum_{k=1,K} n_k = N,
-   and p = (p_1, p_2, ..., p_K) is a probability distribution.
-   Random variates are generated using the conditional binomial method.
-   This scales well with N and does not require a setup step.
-   Ref:
-   C.S. David, The computer generation of multinomial random variates,
-   Comp. Stat. Data Anal. 16 (1993) 205-217
-*/
-void multinomialVar(const uint N, const double[] p, ulong[] n)
-{
-    uint k;
-    auto K = p.length;
-    double norm = 0.0;
-    double sum_p = 0.0;
-    auto rng = Random(12784);
-    uint sum_n = 0;
 
-    /* p[k] may contain non-negative weights that do not sum to 1.0.
-   * Even a probability distribution will not exactly sum to 1.0
-   * due to rounding errors.
-   */
-
-    for (k = 0; k < K; k++)
-    {
-        norm += p[k];
-    }
-
-    for (k = 0; k < K; k++)
-    {
-        if (p[k] > 0.0)
-        {
-            auto rv = binomialVar(N - sum_n, p[k] / (norm - sum_p));
-            n[k] = rv(rng);
-
-        }
-        else
-        {
-            n[k] = 0;
-        }
-
-        sum_p += p[k];
-        sum_n += n[k];
-    }
-
-}
 
 /**
 * Python wrapper
