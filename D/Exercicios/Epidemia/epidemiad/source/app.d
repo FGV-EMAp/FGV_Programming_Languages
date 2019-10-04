@@ -3,7 +3,7 @@ import std.datetime.stopwatch;
 import std.file;
 import core.exception : RangeError;
 
-import models: SIR;
+import models: SIR, SIR_Dem;
 
 
 void main()
@@ -38,4 +38,13 @@ void main()
         }
     }
     outf.close();
+    double alpha = 0.1;
+    auto model2 = new SIR_Dem(N, alpha, beta, gam);
+    model2.initialize(N-I0, I0, 0);
+    sw.start();
+    auto sim2 = model2.run(0, tf);
+    sw.stop();
+    writeln(sw.peek());
+    writefln("Number of steps for SIR_Dem: %s, %s,%s,%s", sim2[0].length, sim2[1].length,
+            sim2[2].length, sim2[3].length);
 }

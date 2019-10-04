@@ -173,6 +173,6 @@ extern (C) void PydMain()
 {
     module_init();
     wrap_class!(SIR, Def!(SIR.initialize), Def!(SIR.run), Init!(uint, double, double))();
-    wrap_class!(SIR_Dem, Init!(uint, double, double, double))();
+    wrap_class!(SIR_Dem, Init!(uint, double, double, double), Def!(SIR_Dem.run), Def!(SIR_Dem.initialize))();
 
 }

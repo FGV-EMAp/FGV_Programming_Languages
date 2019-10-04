@@ -26,7 +26,7 @@ ulong[] multinomialVar(const uint N,  double[] p)
     auto K = p.length;
     double norm = 0.0;
     double sum_p = 0.0;
-    auto rng = Random(25923);
+    alias rng = rne; /// default randon engine, uniquely seeded
 
     uint sum_n = 0;
     ulong[] n;
@@ -70,9 +70,9 @@ ulong[] multinomialVar(const uint N,  double[] p)
 unittest{
     int n=100;
     foreach(i; 1..10){
-        auto sample = multinomialVar(n, [1.0/6, 2.0/6, 3/6]);
+        auto sample = multinomialVar(n, [1.0/6, 2.0/6, 3.0/6]);
         writeln(sample);
     }
-    auto sample = multinomialVar(n, [1.0/6, 2.0/6, 3/6]);
+    auto sample = multinomialVar(n, [1.0/6, 2.0/6, 3.0/6]);
     assert(sum(sample) == n);
 }
