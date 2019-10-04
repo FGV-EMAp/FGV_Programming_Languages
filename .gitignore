@@ -4,3 +4,9 @@
 
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
+.directory
+.mypy_cache/
+dub_platform_probe-*
+.dub/
+*.pyc
+*.pyo
