@@ -29,7 +29,7 @@ class SIR
     uint N;
     double beta;
     double gam;
-    this(uint N, double beta, double gam)
+    this(const uint N, const double beta, const double gam)
     {
         this.N = N;
         this.beta = beta;
@@ -55,7 +55,7 @@ class SIR
         t0 = initial time
         tf = final time
     */
-    Tuple!(double[], uint[], uint[], double[]) run(double t0, double tf, uint seed = 7687738)
+    Tuple!(double[], uint[], uint[], double[]) run(const double t0, const double tf, uint seed = 7687738)
     {
         this.ts ~= t0;
         auto rng = Random(seed);
@@ -104,13 +104,13 @@ class SIR_Dem : SIR
     {
         double alpha;
     }
-    this(uint N, double alpha, double beta, double gamma)
+    this(const uint N, const double alpha, const double beta, const double gamma)
     {
         super(N, beta, gamma);
         this.alpha = alpha;
     }
 
-    override Tuple!(double[], uint[], uint[], double[]) run(double t0, double tf, uint seed = 76838)
+    override Tuple!(double[], uint[], uint[], double[]) run(const double t0, const double tf, uint seed = 76838)
     {
         this.ts ~= t0;
         auto rng = Random(seed);
@@ -172,7 +172,7 @@ class SIR_Dem : SIR
 extern (C) void PydMain()
 {
     module_init();
-    wrap_class!(SIR, Def!(SIR.initialize), Def!(SIR.run), Init!(uint, double, double))();
-    wrap_class!(SIR_Dem, Init!(uint, double, double, double), Def!(SIR_Dem.run), Def!(SIR_Dem.initialize))();
+    wrap_class!(SIR, Def!(SIR.initialize), Def!(SIR.run), Init!(const uint, const double, const double))();
+    wrap_class!(SIR_Dem, Init!(const uint, const double, const double, const double), Def!(SIR_Dem.run), Def!(SIR_Dem.initialize))();
 
 }
