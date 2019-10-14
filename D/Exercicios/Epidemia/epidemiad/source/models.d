@@ -15,7 +15,9 @@ import std.typecons : tuple, Tuple;
 import core.exception : RangeError;
 import mir.random;
 import mir.random.variable : uniformVar, exponentialVar;
+import mir.interpolate.linear;
 import multinomial: multinomialVar;
+import mir.array.allocation;
 import mir.ndslice;
 import mir.ndslice.fuse;
 import pyd.pyd;
@@ -96,7 +98,7 @@ class SIR
 }
 
 /**
-SIR model with demography (births and deaths.
+SIR model with demography (births and deaths).
 */
 class SIR_Dem : SIR
 {
@@ -164,6 +166,87 @@ class SIR_Dem : SIR
     }
 }
 
+
+class Influenza
+{
+    double m,phi,pi,e,w,r,rc;
+    uint S0, I0,V0,C0,R0, N;
+    auto tmat = array([
+            [1,0,0,0,0],
+            [-1,0,1,0,0],
+            [-1,0,1,0,0],
+            [-1,0,0,1,0],
+            [-1,1,0,0,0],
+            [-1,0,0,0,0],
+            [1,-1,0,0,0],
+            [0,-1,1,0,0],
+            [0,-1,0,0,0],
+            [0,0,-1,0,1],
+            [0,0,-1,0,0],
+            [0,0,0,-1,1],
+            [0,0,0,-1,0],
+            [1,0,0,0,-1],
+            [0,0,0,0,-1]
+        ]);
+
+    this(uint N, double[] pars)
+    {
+        this.N = N;
+        this.m = pars[0];
+        this.phi = pars[1];
+        this.pi = pars[2];
+        this.e = pars[3];
+        this.w = pars[4];
+        this.r = pars[5];
+        this.rc = pars[6];
+    }
+    void initialize(uint S0, uint I0, uint V0, uint C0, uint R0)
+    {
+        this.S0 = S0;
+        this.I0 = I0;
+        this.V0 = V0;
+        this.C0 = C0;
+        this.R0 = R0;
+    }
+    auto run(double t0, double tf)
+    {
+        uint[][5] state = array([[this.S0, this.I0, this.V0, this.C0, this.R0]]);
+        auto ts = array([0]);
+        while (ts[1-$] < tf)
+        {
+            alias S = state[1-$][0];
+            alias I = state[1-$][1];
+            alias V = state[1-$][2];
+            alias C = state[1-$][3];
+            alias R = state[1-$][4];
+
+            double T = m*N + (1-pi)*beta(t)/N*S*I + phi*S + pi*beta(t)/N*S*I + e*nu(t)*S + m*S + w*V + beta_v(t)*V*I/N + m*V + r*I + m*I + rc*C + m*C + gam(t)*R + m*R;
+            auto erv = exponentialVar!double(1.0 / T);
+            double dt = erv(rne);
+            auto ev = multinomialVar(1, [m*N/T,
+                                 ((1-pi)*beta(t)/N*S*I)/T,
+                                 (phi*S)/T,
+                                 (pi*beta(t)/N*S*I)/T,
+                                 (e*nu(t)*S)/T,
+                                 (m*S)/T,
+                                 (w*V)/T,
+                                 (beta_v(t)*V*I/N)/T,
+                                 (m*V)/T,
+                                 ( r*I)/T,
+                                 (m*I)/T,
+                                 (rc*C)/T,
+                                 (m*C)/T,
+                                 (gam(t)*R)/T,
+                                 (m*R)/T]).enumerate.maxElement!"a.value"[0];
+            state ~= state[1-$] + tmat[ev];
+
+
+
+
+        }
+        return state;
+    }
+}
 
 
 /**
