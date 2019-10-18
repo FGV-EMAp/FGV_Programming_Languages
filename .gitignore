@@ -10,3 +10,5 @@ dub_platform_probe-*
 .dub/
 *.pyc
 *.pyo
+*.lst
+*.dub
