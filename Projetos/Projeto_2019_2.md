@@ -11,6 +11,8 @@ O Usuário **deve poder escolher** qual modelo deseja simular, **escolher o valo
 - Para publicar o seu aplicativo, vocês devem usar o serviço [Heroku](https://devcenter.heroku.com/articles/getting-started-with-python#set-up).
 
 ## Entrega:
-Para entregar o seu projeto, ele deve estar sendo desenvolvido em um repositório próprio, compartilhado com o professor. O professor irá considerar a entrega como o estado do projeto no ultimo commit do dia da entrega. O link para acesso ao aplicativo no Heroku, deverá constar do `README.md` na raiz do projeto.
+**Data da Entrega: 15/11/2019**
+
+Para entregar o seu projeto, ele deve estar sendo desenvolvido em um repositório próprio, compartilhado com o professor. O professor irá considerar a entrega como o estado do projeto no ultimo commit do dia da entrega. O link para **acesso ao aplicativo** no Heroku, deverá constar do `README.md` na raiz do projeto.
 
 A implementação correta do aplicativo, atendendo todas as especificações acima valerá **nove pontos**, que serão alocados subjetivamente pelo professor. A publicação (deploy) do projeto via `Heroku`, valerá mais **5 pontos**, totalizando 14 pontos dos quais no máximo 10 formarão a nota do grupo.
