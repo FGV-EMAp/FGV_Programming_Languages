@@ -114,22 +114,22 @@ class SIR_Dem : SIR
 
     override Tuple!(double[], uint[], uint[], double[]) run(double t0, double tf, uint seed = 76838)
     {
-        this.ts ~= t0;
+        ts ~= t0;
         auto rng = Random(seed);
         auto urv = uniformVar!double(0.0, 1.0);
         double[] dts = [0];
         double R, U, pinf, prec, pbirth, pds, pdi;
-        while ((this.ts[$ - 1] < tf) & (this.I[$ - 1] > 0))
+        while ((ts[$ - 1] < tf) & (I[$ - 1] > 0))
         {
             U = urv(rng);
-            R = this.alpha * this.N + this.beta * this.S[$ - 1] * this.I[$ - 1]
-                / this.N + this.gam * this.I[$ - 1] + this.alpha * this.S[$ - 1]
-                + this.alpha * this.I[$ - 1];
-            pbirth = this.alpha * this.N / R; /// Probability of the next event being a birth (S -> S+1)
-            pinf = ((this.beta / this.N) * this.S[$ - 1] * this.I[$ - 1]) / R; /// Probability of next event being an infection
-            prec = this.gam * this.I[$ - 1] / R; /// Probability of the next event being a recovery (I -> I-1)
-            pds = this.alpha * this.S[$ - 1] / R; /// Probability of the next event being a death of an S (S -> S-1)
-            pdi = this.alpha * this.I[$ - 1] / R; /// Probability of the next event being a death of an I (I -> I-1)
+            R = alpha * N + beta * S[$ - 1] * I[$ - 1]
+                / N + gam * I[$ - 1] + alpha * S[$ - 1]
+                + alpha * I[$ - 1];
+            pbirth = alpha * N / R; /// Probability of the next event being a birth (S -> S+1)
+            pinf = ((beta / N) * S[$ - 1] * I[$ - 1]) / R; /// Probability of next event being an infection
+            prec = gam * I[$ - 1] / R; /// Probability of the next event being a recovery (I -> I-1)
+            pds = alpha * S[$ - 1] / R; /// Probability of the next event being a death of an S (S -> S-1)
+            pdi = alpha * I[$ - 1] / R; /// Probability of the next event being a death of an I (I -> I-1)
             auto ev = multinomialVar(1, [pbirth, pinf, prec, pds, pdi]).enumerate.maxElement!"a.value"[0];
             auto erv = exponentialVar!double(1.0 / R);
             double dt = erv(rng);
@@ -169,10 +169,11 @@ class SIR_Dem : SIR
 
 class Influenza
 {
-    double m,phi,pi,e,w,r,rc;
+    double m,phi,pi,e,w,r,rc,beta, gam, nu, beta_v;
+    Linear!(double, 1LU, immutable(double)*)[string] ff; //associative arrays to store forcing functions
     uint S0, I0,V0,C0,R0, N;
-    auto tmat = array([
-            [1,0,0,0,0],
+    //auto tmat = slice!int(15,5);
+    int[][] tmat = [[1,0,0,0,0],
             [-1,0,1,0,0],
             [-1,0,1,0,0],
             [-1,0,0,1,0],
@@ -186,8 +187,7 @@ class Influenza
             [0,0,0,-1,1],
             [0,0,0,-1,0],
             [1,0,0,0,-1],
-            [0,0,0,0,-1]
-        ]);
+            [0,0,0,0,-1]];
 
     this(uint N, double[] pars)
     {
@@ -199,7 +199,23 @@ class Influenza
         this.w = pars[4];
         this.r = pars[5];
         this.rc = pars[6];
+        this.beta = pars[7];
+        this.gam = pars[8];
+        this.nu = pars[9];
+        this.beta_v = pars[10];
     }
+
+    /**
+    Add forcing functions beta, beta_v, nu, and gam
+    params:
+    name: name of the function from the list above.
+    t: the t values
+    y: the y values
+    */
+    void add_forcing(string name, immutable double[] t, immutable double[] y){
+        this.ff[name] = linear!double(t.sliced,y.sliced);
+    }
+
     void initialize(uint S0, uint I0, uint V0, uint C0, uint R0)
     {
         this.S0 = S0;
@@ -210,38 +226,41 @@ class Influenza
     }
     auto run(double t0, double tf)
     {
-        uint[][5] state = array([[this.S0, this.I0, this.V0, this.C0, this.R0]]);
+        auto state = new int[][5];
+        state ~= [this.S0, this.I0, this.V0, this.C0, this.R0];
         auto ts = array([0]);
-        while (ts[1-$] < tf)
+        while (ts[$-1] < tf)
         {
-            alias S = state[1-$][0];
-            alias I = state[1-$][1];
-            alias V = state[1-$][2];
-            alias C = state[1-$][3];
-            alias R = state[1-$][4];
+            auto S = state[$-1][0];
+            auto I = state[$-1][1];
+            auto V = state[$-1][2];
+            auto C = state[$-1][3];
+            auto R = state[$-1][4];
+            double t = ts[$-1];
 
-            double T = m*N + (1-pi)*beta(t)/N*S*I + phi*S + pi*beta(t)/N*S*I + e*nu(t)*S + m*S + w*V + beta_v(t)*V*I/N + m*V + r*I + m*I + rc*C + m*C + gam(t)*R + m*R;
+            double T = m*N + (1-pi)*ff["beta"](t)/N*S*I + phi*S + pi*ff["beta"](t)/N*S*I + e*ff["nu"](t)*S + m*S + w*V + ff["beta_v"](t)*V*I/N + m*V + r*I + m*I + rc*C + m*C + ff["gam"](t)*R + m*R;
             auto erv = exponentialVar!double(1.0 / T);
             double dt = erv(rne);
             auto ev = multinomialVar(1, [m*N/T,
-                                 ((1-pi)*beta(t)/N*S*I)/T,
+                                 ((1-pi)*ff["beta"](t)/N*S*I)/T,
                                  (phi*S)/T,
-                                 (pi*beta(t)/N*S*I)/T,
-                                 (e*nu(t)*S)/T,
+                                 (pi*ff["beta"](t)/N*S*I)/T,
+                                 (e*ff["nu"](t)*S)/T,
                                  (m*S)/T,
                                  (w*V)/T,
-                                 (beta_v(t)*V*I/N)/T,
+                                 (ff["beta_v"](t)*V*I/N)/T,
                                  (m*V)/T,
-                                 ( r*I)/T,
+                                 (r*I)/T,
                                  (m*I)/T,
                                  (rc*C)/T,
                                  (m*C)/T,
-                                 (gam(t)*R)/T,
+                                 (ff["gam"](t)*R)/T,
                                  (m*R)/T]).enumerate.maxElement!"a.value"[0];
-            state ~= state[1-$] + tmat[ev];
-
-
-
+            int[5] new_state;
+            foreach(i, x; tmat[ev]){
+                new_state[i] = state[$-1][i] + x;
+            }
+            state ~= new_state;
 
         }
         return state;
