@@ -2,10 +2,6 @@
 	"authors": [
 		"Flávio Codeco Coelho"
 	],
-	"buildOptions": [
-		"inline",
-		"optimize"
-	],
 	"copyright": "Copyright © 2019, Flávio Codeco Coelho",
 	"dependencies": {
 		"mir": "~>3.2.0",
@@ -20,6 +16,7 @@
 	"sourcePaths": [
 		"source/"
 	],
+	"target": "library",
 	"subConfigurations": {
 		"pyd": "python37"
 	}
