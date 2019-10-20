@@ -10,7 +10,7 @@ setup(
     name=projName,
     version='0.2',
     ext_modules=[
-        Extension(projName, ['source/models.d', 'source/multinomial'],
+        Extension(projName, ['source/models.d', 'source/multinomial.d'],
                   include_dirs=build_pars['importPaths'],
                   extra_link_args=build_pars['linkerFiles'],
                   # extra_compile_args=['-w'],

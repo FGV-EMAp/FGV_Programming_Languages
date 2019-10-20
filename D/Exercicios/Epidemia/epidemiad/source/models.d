@@ -166,10 +166,12 @@ class SIR_Dem : SIR
     }
 }
 
-
+/**
+Influenza model model with environmental forcing
+*/
 class Influenza
 {
-    double m,phi,pi,e,w,r,rc,beta, gam, nu, beta_v;
+    double m,phi,pi,e,w,r,rc;
     Linear!(double, 1LU, immutable(double)*)[string] ff; //associative arrays to store forcing functions
     uint S0, I0,V0,C0,R0, N;
     //auto tmat = slice!int(15,5);
@@ -199,10 +201,6 @@ class Influenza
         this.w = pars[4];
         this.r = pars[5];
         this.rc = pars[6];
-        this.beta = pars[7];
-        this.gam = pars[8];
-        this.nu = pars[9];
-        this.beta_v = pars[10];
     }
 
     /**
@@ -224,23 +222,25 @@ class Influenza
         this.C0 = C0;
         this.R0 = R0;
     }
-    auto run(double t0, double tf)
+    Tuple!(double[], int[][]) run(double t0, double tf)
     {
-        auto state = new int[][5];
-        state ~= [this.S0, this.I0, this.V0, this.C0, this.R0];
-        auto ts = array([0]);
-        while (ts[$-1] < tf)
+        int[][] state;
+        auto rng = Random(2345);
+        state ~= [S0, V0, I0, C0, R0];
+        double[] ts = [0.0];
+        double t = 0;
+        while (t < tf) //& (state[$-1][2] + state[$-1][1]+ state[$-1][3]>0))
         {
-            auto S = state[$-1][0];
-            auto I = state[$-1][1];
-            auto V = state[$-1][2];
-            auto C = state[$-1][3];
-            auto R = state[$-1][4];
-            double t = ts[$-1];
+            int S = state[$-1][0];
+            int V = state[$-1][1];
+            int I = state[$-1][2];
+            int C = state[$-1][3];
+            int R = state[$-1][4];
 
             double T = m*N + (1-pi)*ff["beta"](t)/N*S*I + phi*S + pi*ff["beta"](t)/N*S*I + e*ff["nu"](t)*S + m*S + w*V + ff["beta_v"](t)*V*I/N + m*V + r*I + m*I + rc*C + m*C + ff["gam"](t)*R + m*R;
             auto erv = exponentialVar!double(1.0 / T);
-            double dt = erv(rne);
+            auto urv = uniformVar!double(0.0, 1.0);
+            double dt = erv(rne);//-log(urv(rng))/T;
             auto ev = multinomialVar(1, [m*N/T,
                                  ((1-pi)*ff["beta"](t)/N*S*I)/T,
                                  (phi*S)/T,
@@ -256,14 +256,19 @@ class Influenza
                                  (m*C)/T,
                                  (ff["gam"](t)*R)/T,
                                  (m*R)/T]).enumerate.maxElement!"a.value"[0];
-            int[5] new_state;
+            auto new_state = state[$-1].dup;
             foreach(i, x; tmat[ev]){
-                new_state[i] = state[$-1][i] + x;
+                new_state[i] += x;
             }
+            //writefln("t: %s",t);
+            //writefln("dt: %s",dt);
+            //writeln(ev);
             state ~= new_state;
+            t += dt;
+            ts ~= t;
 
         }
-        return state;
+        return tuple(ts, state);
     }
 }
 
@@ -276,5 +281,9 @@ extern (C) void PydMain()
     module_init();
     wrap_class!(SIR, Def!(SIR.initialize), Def!(SIR.run), Init!(const uint, const double, const double))();
     wrap_class!(SIR_Dem, Init!(const uint, const double, const double, const double), Def!(SIR_Dem.run), Def!(SIR_Dem.initialize))();
-
+    wrap_class!(Influenza, Init!(uint, double[]),
+    Def!(Influenza.initialize),
+    Def!(Influenza.add_forcing),
+    Def!(Influenza.run)
+    )();
 }
