@@ -20,33 +20,31 @@ import mir.random.variable : uniformVar, exponentialVar, binomialVar;
    C.S. David, The computer generation of multinomial random variates,
    Comp. Stat. Data Anal. 16 (1993) 205-217
 */
-ulong[] multinomialVar(const uint N,  double[] p)
+size_t[] multinomialVar(const uint N,  double[] probs)
 {
-    uint k;
-    auto K = p.length;
     double norm = 0.0;
     double sum_p = 0.0;
     alias rng = rne; /// default randon engine, uniquely seeded
 
     uint sum_n = 0;
-    ulong[] n;
+    size_t[] n;
 
-    /* p[k] may contain non-negative weights that do not sum to 1.0.
+    /* probs may contain non-negative weights that do not sum to 1.0.
    * Even a probability distribution will not exactly sum to 1.0
    * due to rounding errors.
    */
 
-    for (k = 0; k < K; k++)
+    foreach (k, p; probs)
     {
         n ~= 0; /// intializing array n
-        norm += p[k];
+        norm += p;
     }
 
-    for (k = 0; k < K; k++)
+    foreach (k, p; probs)
     {
-        if (p[k] > 0.0)
+        if (p > 0.0)
         {
-            auto rv = binomialVar(N - sum_n, p[k] / (norm - sum_p));
+            auto rv = binomialVar( N - sum_n, p / (norm - sum_p));
             n[k] = rv(rng);
 
         }
@@ -55,24 +53,18 @@ ulong[] multinomialVar(const uint N,  double[] p)
             n[k] = 0;
         }
 
-        sum_p += p[k];
+        sum_p += p;
         sum_n += n[k];
     }
     return n;
 }
 
-//void main(string[] args){
-//    auto sample = multinomialVar(100, [1.0/3, 2.0/3]);
-//    writeln(sample);
-//}
-
-
 unittest{
-    int n=100;
+    int n = 10000;
     foreach(i; 1..10){
         auto sample = multinomialVar(n, [1.0/6, 2.0/6, 3.0/6]);
         writeln(sample);
     }
-    auto sample = multinomialVar(n, [1.0/6, 2.0/6, 3.0/6]);
+    auto sample = multinomialVar( n, [ 32, 10, 100]);
     assert(sum(sample) == n);
 }
