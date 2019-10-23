@@ -15,7 +15,7 @@ def index(request):
     if request.method == 'GET':
         context['titulo'] = "Defina um grafico"
     elif request.method == 'POST':
-        tipo = request.POST.get('tipo', 'l')
+        tipo = request.POST.get('Tipo', 'l')
         x = request.POST.get('x', [])
         y = request.POST.get('y', [])
         g = Grafico(tipo=tipo, dadosx=x, dadosy=y)
@@ -29,12 +29,14 @@ def index(request):
 
 
 def cria_grafico(x, y, tipo):
+    x = [float(i) for i in x.split(',')]
+    y = [float(i) for i in y.split(',')]
     if tipo == 'l':
         plot = figure(title="Grafico de linha", x_axis_label='X', y_axis_label='Y', plot_width=800, plot_height=400)
         plot.line(x, y, line_width=2)
     else:
-        plot = figure(title="Grafico de linha", x_axis_label='X', y_axis_label='Y', plot_width=800, plot_height=400)
-        plot.vbar()
+        plot = figure(title="Grafico de Barras", x_axis_label='X', y_axis_label='Y', plot_width=800, plot_height=400)
+        plot.vbar(x=x, width=0.9, top=y, bottom=0)
 
     script, div = components(plot)
     return script, div
