@@ -12,3 +12,20 @@ dub_platform_probe-*
 *.pyo
 *.lst
 *.dub
+
+# Unversioned files
+D/Exercicios/Epidemia/epidemia
+D/Exercicios/Epidemia/epidemiad/build/lib.linux-x86_64-3.6/
+D/Exercicios/Epidemia/epidemiad/dub.selections.json
+D/Exercicios/Epidemia/epidemiad/sim.csv
+D/Exercicios/Epidemia/sim.csv
+"ListaPresen\303\247a2019.odt"
+Notas
+"Plano de Ensino LINGUAGEM DE PROGRAMA\303\207\303\203O.doc"
+"Python/Exercicios/Aplica\303\247\303\243o Web/dataviz/db.sqlite3"
+Python/Exercicios/Jogos/Crivo/Logo_FGV_EMAp.png
+Quiz_2.pdf
+calendario.ods
+notas_trabalho1.ods
+provas.zip
+respostas_e_tests.ipynb

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ titulo|title }}</h1>
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        {% for tipo, codigo in tipos.items %}
+            <input type="radio" name="Tipo" id="tipo{{ forloop.counter }}" value="{{ codigo }}">
+            <label for="Tipo {{ forloop.counter }}">{{ tipo }}</label><br>
+        {% endfor %}
+        <label for="x">Valores de x:</label>
+        <input type="text" , name="x" value=""><br>
+        <label for="y">Valores de y:</label>
+        <input type="text" , name="y" value=""><br>
+
+        <input type="submit" value="Plotar">
+    </form>
+{% endblock %}
