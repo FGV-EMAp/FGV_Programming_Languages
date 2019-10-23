@@ -8,24 +8,24 @@ from bokeh.embed import components
 # Create your views here.
 
 def index(request):
-    context = {'tipos': {'linha': 'l', 'Barra': 'l'},
+    context = {'tipos': {'Linha': 'l', 'Barra': 'b'},
                'script': "",
                'div': ""
                }
     if request.method == 'GET':
-        context['titulo'] = "Defina um grafico",
+        context['titulo'] = "Defina um grafico"
     elif request.method == 'POST':
         tipo = request.POST.get('tipo', 'l')
         x = request.POST.get('x', [])
         y = request.POST.get('y', [])
-        g = Grafico(tipo=tipo, datax=x, datay=y)
+        g = Grafico(tipo=tipo, dadosx=x, dadosy=y)
         g.save()
         script, div = cria_grafico(x, y, tipo)
         context.update({'titulo': "Seu grafico!",
                         'script': script,
                         'div': div
                         })
-    return render_to_response('home.html', context)
+    return render(request, 'home.html', context)
 
 
 def cria_grafico(x, y, tipo):

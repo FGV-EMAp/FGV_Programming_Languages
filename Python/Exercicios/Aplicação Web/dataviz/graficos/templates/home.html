@@ -8,11 +8,16 @@
             <input type="radio" name="Tipo" id="tipo{{ forloop.counter }}" value="{{ codigo }}">
             <label for="Tipo {{ forloop.counter }}">{{ tipo }}</label><br>
         {% endfor %}
-        <label for="x">Valores de x:</label>
+        <label for="x">Valores de x: </label>
         <input type="text" , name="x" value=""><br>
-        <label for="y">Valores de y:</label>
+        <label for="y">Valores de y: </label>
         <input type="text" , name="y" value=""><br>
 
         <input type="submit" value="Plotar">
     </form>
+
+
 {% endblock %}
+{{ script }}
+
+{{ div }}
