@@ -26,12 +26,13 @@ import pyd.pyd;
 class SIR
 {
     uint[3] inits;
+    uint S0, I0, R0;
     uint[] S, I, R;
     double[] ts;
     uint N;
     double beta;
     double gam;
-    this(const uint N, const double beta, const double gam)
+    @nogc this(const uint N, const double beta, const double gam)
     {
         this.N = N;
         this.beta = beta;
@@ -46,6 +47,9 @@ class SIR
     */
     void initialize(uint S, uint I, uint R)
     {
+        S0 = S;
+        I0 = I;
+        R0 = R;
         this.S ~= S;
         this.I ~= I;
         this.R ~= R;
@@ -59,6 +63,12 @@ class SIR
     */
     Tuple!(double[], uint[], uint[], double[]) run(const double t0, const double tf, uint seed = 7687738)
     {
+        if (this.ts.length > 1){
+            this.ts = [ t0];
+            this.S = [ S0];
+            this.I = [ I0];
+            this.R = [ R0];
+        }
         this.ts ~= t0;
         auto rng = Random(seed);
         auto urv = uniformVar!double(0.0, 1.0);
@@ -97,6 +107,8 @@ class SIR
     }
 }
 
+
+
 /**
 SIR model with demography (births and deaths).
 */
@@ -106,7 +118,7 @@ class SIR_Dem : SIR
     {
         double alpha;
     }
-    this(const uint N, const double alpha, const double beta, const double gamma)
+    @nogc this(const uint N, const double alpha, const double beta, const double gamma)
     {
         super(N, beta, gamma);
         this.alpha = alpha;
@@ -114,6 +126,12 @@ class SIR_Dem : SIR
 
     override Tuple!(double[], uint[], uint[], double[]) run(const double t0, const double tf, uint seed = 76838)
     {
+        if (this.ts.length > 1){
+            this.ts = [ t0];
+            this.S = [ S0];
+            this.I = [ I0];
+            this.R = [ R0];
+        }
         ts ~= t0;
         auto rng = Random(seed);
         auto urv = uniformVar!double(0.0, 1.0);
@@ -165,6 +183,20 @@ class SIR_Dem : SIR
         return res;
     }
 }
+/// Checking N is being initialized on the superclass
+unittest{
+    auto model = new SIR_Dem( 150000, 0.1, 0.2, 1/21.);
+    assert (model.N==150000);
+}
+/// Checking model can be run twice
+unittest{
+    auto model = new SIR_Dem( 1500, 0.1, 0.2, 1/21.);
+    model.initialize( 1498, 2, 0);
+    model.run( 0.0, 365.0);
+    model.run( 0.0, 365.0);
+
+}
+
 
 /**
 Influenza model model with environmental forcing
