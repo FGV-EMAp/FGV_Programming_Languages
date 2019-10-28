@@ -1,5 +1,6 @@
 from django.db import models
-from django.forms import ModelForm
+from django.forms import ModelForm, ValidationError
+
 
 # Create your models here.
 
@@ -26,3 +27,20 @@ class FormularioDoGrafico(ModelForm):
         #         'max_length': _("This writer's name is too long."),
         #     },
         # }
+
+    def clean_dadosx(self):
+        dadosx = self.cleaned_data['dadosx']
+
+        try:
+            x = [float(i) for i in dadosx.strip(',').split(',')]
+        except:
+            raise ValidationError("Formataçao invalida para valores de x")
+        return dadosx
+
+    def clean_dadosy(self):
+        dadosy = self.cleaned_data['dadosy']
+        try:
+            y = [float(i) for i in dadosy.strip(',').split(',')]
+        except:
+            raise ValidationError("Formataçao invalida para valores de y")
+        return dadosy
