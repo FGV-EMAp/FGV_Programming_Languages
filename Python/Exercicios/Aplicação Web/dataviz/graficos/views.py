@@ -13,7 +13,7 @@ def index(request):
                'div': ""
                }
     if request.method == 'GET':
-        context['titulo'] = "Defina um grafico"
+        context['titulo'] = "Defina um gráfico"
         context['form'] = FormularioDoGrafico()
     elif request.method == 'POST':
         form = FormularioDoGrafico(request.POST)
@@ -25,7 +25,7 @@ def index(request):
             g = Grafico(tipo=tipo, dadosx=x, dadosy=y)
             g.save()
             script, div = cria_grafico(x, y, tipo)
-            context.update({'titulo': "Seu grafico!",
+            context.update({'titulo': "Seu gráfico!",
                             'script': script,
                             'div': div
                             })

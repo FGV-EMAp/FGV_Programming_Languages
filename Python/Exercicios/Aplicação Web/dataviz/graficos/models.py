@@ -15,8 +15,8 @@ class FormularioDoGrafico(ModelForm):
         fields = ['tipo', 'dadosx', 'dadosy']
         labels = {
             'tipo': 'Tipo',
-            'dadosx': "valores de x",
-            'dadosy': "valores de y"
+            'dadosx': "Valores de x",
+            'dadosy': "Valores de y"
         }
         # help_texts = {
         #     'tipo': 'Escolha o tipo do gráfico',
@@ -34,7 +34,7 @@ class FormularioDoGrafico(ModelForm):
         try:
             x = [float(i) for i in dadosx.strip(',').split(',')]
         except:
-            raise ValidationError("Formataçao invalida para valores de x")
+            raise ValidationError("Formataçao inválida para valores de x")
         return dadosx
 
     def clean_dadosy(self):
@@ -42,5 +42,5 @@ class FormularioDoGrafico(ModelForm):
         try:
             y = [float(i) for i in dadosy.strip(',').split(',')]
         except:
-            raise ValidationError("Formataçao invalida para valores de y")
+            raise ValidationError("Formataçao inválida para valores de y")
         return dadosy
