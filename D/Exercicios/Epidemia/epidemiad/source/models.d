@@ -246,11 +246,11 @@ class Influenza
         this.ff[name] = linear!double(t.sliced,y.sliced);
     }
 
-    void initialize(uint S0, uint I0, uint V0, uint C0, uint R0)
+    void initialize(uint S0, uint V0, uint I0, uint C0, uint R0)
     {
         this.S0 = S0;
-        this.I0 = I0;
         this.V0 = V0;
+        this.I0 = I0;
         this.C0 = C0;
         this.R0 = R0;
     }
