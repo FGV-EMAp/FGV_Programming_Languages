@@ -3,15 +3,16 @@
 Ementa:
 O objetivo da disciplina de Linguagens de Programação é apresentá-las, comparando os vários paradigmas, e promovendo o desenvolvimento da maestria em uma linguagem multiparadigmática, além de fundamentos de outras linguagens relevantes para o ecossistema de um matemático aplicado ou cientista de dados. Também serão apresentados os processos de versionamento e teste, característicos do desenvolvimento de software.
 
-### Recursos Adicionais:
+### Additional Resources:
 
-#### Sobre Linguagens de Programação: 
+#### About Programming Languages (PLs): 
 
-Por quê Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages), [3](https://medium.freecodecamp.org/best-programming-languages-to-learn-in-2018-ultimate-guide-bfc93e615b35), [4](https://www.edureka.co/blog/python-interesting-facts-you-need-to-know/)  
-[Histórico das LPs](https://en.wikipedia.org/wiki/History_of_programming_languages)  
-[Timeline das LPs](https://en.wikipedia.org/wiki/Timeline_of_programming_languages)  
-[Paradigmas de LPs](https://en.m.wikipedia.org/wiki/Programming_paradigm)  
-[O que (não) fazer para aprender a programar?](https://medium.freecodecamp.org/learn-to-code-the-hard-way-65dece5b0005)  
+Why Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages), [3](https://medium.freecodecamp.org/best-programming-languages-to-learn-in-2018-ultimate-guide-bfc93e615b35), [4](https://www.edureka.co/blog/python-interesting-facts-you-need-to-know/)  
+[PLs history](https://en.wikipedia.org/wiki/History_of_programming_languages)  
+[PLs timeline](https://en.wikipedia.org/wiki/Timeline_of_programming_languages)  
+[PLs paradigms](https://en.m.wikipedia.org/wiki/Programming_paradigm)  
+[What (not) to do to learn programming?](https://medium.freecodecamp.org/learn-to-code-the-hard-way-65dece5b0005)  
+["Hello World" in 50 different programming languages](https://medium.com/javarevisited/70-years-of-hello-world-with-50-programming-languages-2400de893a97)  
 
 #### Tópicos de Linguagem Python:
 [Um tutorial de Python](https://python.swaroopch.com/)  
