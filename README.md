@@ -23,11 +23,7 @@ Why Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.
 
 #### Git, Github e Versionamento:
 
-[Tutorial de Git](https://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git)  
-[Texto introdutório sobre Git](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-git/)  
-[Outro guia rápido de GIT](http://rogerdudler.github.io/git-guide/index.pt_BR.html)  
-[Curso gratuito de Git e Github](https://www.udemy.com/git-e-github-para-iniciantes/)  
-[Git Cheat Sheet](https://www.git-tower.com/blog/git-cheat-sheet/)  
+Git references [intro](https://towardsdatascience.com/introduction-to-github-for-data-scientists-2cf8b9b25fba), [intro (pt-br)](https://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git), [intro2 (pt-br)](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-git/), [guide](http://rogerdudler.github.io/git-guide/index.pt_BR.html), [course (pt-br)](https://www.udemy.com/git-e-github-para-iniciantes/), [cheat sheet](https://www.git-tower.com/blog/git-cheat-sheet/)  
 
 Configurações:  
   + [Configurando o upstream localmente](https://help.github.com/articles/configuring-a-remote-for-a-fork/)  
