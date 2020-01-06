@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/epidemiad
+epidemiad.so
+epidemiad.dylib
+epidemiad.dll
+epidemiad.a
+epidemiad.lib
+epidemiad-test-*
+*.exe
+*.o
+*.obj
+*.lst

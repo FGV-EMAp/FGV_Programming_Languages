@@ -1,0 +1,9 @@
+{
+	"authors": [
+		"Flávio Codeço Coelho"
+	],
+	"copyright": "Copyright © 2019, Flávio Codeço Coelho",
+	"description": "A minimal D application.",
+	"license": "proprietary",
+	"name": "alomundo"
+}

@@ -3,8 +3,6 @@
 Ementa:
 O objetivo da disciplina de Linguagens de Programação é apresentá-las, comparando os vários paradigmas, e promovendo o desenvolvimento da maestria em uma linguagem multiparadigmática, além de fundamentos de outras linguagens relevantes para o ecossistema de um matemático aplicado ou cientista de dados. Também serão apresentados os processos de versionamento e teste, característicos do desenvolvimento de software.
 
-### Additional Resources:
-
 #### About Programming Languages (PLs): 
 
 Why Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages), [3](https://medium.freecodecamp.org/best-programming-languages-to-learn-in-2018-ultimate-guide-bfc93e615b35), [4](https://www.edureka.co/blog/python-interesting-facts-you-need-to-know/)  
@@ -21,8 +19,23 @@ Why Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.
 [Formatação de strings / output no Python](http://www.python-course.eu/python3_formatted_output.php)  
 [Objetos mutáveis e imutáveis](https://www.pythonforthelab.com/blog/mutable-and-immutable-objects/)  
 
-#### Git, Github e Versionamento:
+#### Linguagem D:
+[![Aprenda D em uma hora](http://img.youtube.com/vi/rwZFTnf9bDU/0.jpg)](http://www.youtube.com/watch?v=rwZFTnf9bDU "")
+Domine o basico de D em uma hora!
 
+#### Git, Github e Versionamento:
+Atualizando o editor padrão do Git bash (para usuários Windows):
+```
+git config --global core.editor "nano.exe"
+```
+
+- [Tutorial de Git](https://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git)
+- [Ambiente Interativo](https://learngitbranching.js.org/)
+- [Texto introdutório sobre Git](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-git/)  
+- [Outro guia rápido de GIT](http://rogerdudler.github.io/git-guide/index.pt_BR.html)  
+- [Curso gratuito de Git e Github](https://www.udemy.com/git-e-github-para-iniciantes/)  
+- [Git Cheat Sheet](https://www.git-tower.com/blog/git-cheat-sheet/)  
+=======
 Git references [intro](https://towardsdatascience.com/introduction-to-github-for-data-scientists-2cf8b9b25fba), [intro (pt-br)](https://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git), [intro2 (pt-br)](https://www.dadosaleatorios.com.br/post/introdu%C3%A7%C3%A3o-ao-git/), [guide](http://rogerdudler.github.io/git-guide/index.pt_BR.html), [course (pt-br)](https://www.udemy.com/git-e-github-para-iniciantes/), [cheat sheet](https://www.git-tower.com/blog/git-cheat-sheet/)  
 
 Configurações:  
@@ -55,8 +68,29 @@ Configurações:
 [Brilliant](http://brilliant.org/)  
 [URI Online Judge](https://www.urionlinejudge.com.br/judge/en/login)  
 [Exercícios em Python](http://joaoventura.net/static/files/python_exercises_book.pdf)  
+[Rosetta Code](http://www.rosettacode.org)
+[Exercism](https://exercism.io)
 
 #### Outros recursos  
 
 [Exemplo de Banco de Dados](https://github.com/datacharmer/test_db)  
 [Making CLI Tools with Python](https://medium.com/dabbler-in-de-stress/make-linux-cli-tools-756f7f7f06b3)  
+
+#### Comunicação geral
+- [hackmd do Curso](https://hackmd.io/HN90LqA_T1e1cRGIdnd3Sg)
+
+#### Ambiente online para entrega de exercícios
+- Para as tarefas mais curtas na linguagem Python, Incluido os Quizzes, utilizaremos o [Repl.it](https://repl.it/teacher/classrooms/141262). [Link para convite de inscrição](https://repl.it/classroom/invite/c5pHtVQ)
+- Para projetos mais complexos usaremos [Google Classroom](https://classroom.google.com/u/0/c/MzcyMDcwMTk1MTJa), para publicação das tarefas e as entregas serão feitas via Github.
+
+#### Ambientes computacionais online gratuitos
+- Ambiente de Programação Matemática: [Cocalc](https://cocalc.com). Inclui Sage, Python, R, Shell linux, Jupyter, etc.
+
+#### Filmes sobre Historia da computaçao
+ [![Revolution OS](http://img.youtube.com/vi/7LGKgdWtrqI/0.jpg)](http://www.youtube.com/watch?v=7LGKgdWtrqI "") 
+ 
+ Historia do movimento opensource e do sistema operacional Linux
+ 
+[![The secret history of hacking](http://img.youtube.com/vi/SbeoxPPPCyA/0.jpg)](http://www.youtube.com/watch?v=SbeoxPPPCyA "")
+
+Documentario sobre a origem da cultura hacker.

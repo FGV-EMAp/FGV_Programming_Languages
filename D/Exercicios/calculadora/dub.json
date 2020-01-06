@@ -1,0 +1,9 @@
+{
+	"authors": [
+		"Flávio Codeço Coelho"
+	],
+	"copyright": "Copyright © 2019, Flávio Codeço Coelho",
+	"description": "Simple calculator program written in D",
+	"license": "BSD",
+	"name": "calculator"
+}
