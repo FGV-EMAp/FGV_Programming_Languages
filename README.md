@@ -50,7 +50,7 @@ Configurações:
 [Diferenças de Implementação](https://unix.stackexchange.com/questions/119905/why-does-my-regular-expression-work-in-x-but-not-in-y)  
 
 #### Shell Script
-[Tutorial](https://www.shellscript.sh/)  
+[Tutorial](https://www.shellscript.sh/), [Beginner's article](https://medium.com/better-programming/how-bash-works-8424becc12f3)    
 
 #### Sobre os Ambientes de Desenvolvimento:
 
