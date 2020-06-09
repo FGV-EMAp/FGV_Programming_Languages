@@ -16,6 +16,7 @@ Why Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.
 [Um tutorial de Python](https://python.swaroopch.com/)  
 [Truques com Python](https://hackernoon.com/python-tricks-101-2836251922e0)  
 [Visualização da execução de código](http://www.pythontutor.com/visualize.html#mode=edit)  
+[Estruturas de Dados](https://www.analyticsvidhya.com/blog/2020/06/data-structures-python/)  
 [Formatação de strings / output no Python](http://www.python-course.eu/python3_formatted_output.php)  
 [Objetos mutáveis e imutáveis](https://www.pythonforthelab.com/blog/mutable-and-immutable-objects/)  
 [iterators e generators](https://www.analyticsvidhya.com/blog/2020/05/python-iterators-and-generators/)
