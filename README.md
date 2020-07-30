@@ -5,7 +5,7 @@ O objetivo da disciplina de Linguagens de Programação é apresentá-las, compa
 
 #### About Programming Languages (PLs): 
 
-Why Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://spectrum.ieee.org/at-work/innovation/the-2018-top-programming-languages), [3](https://medium.freecodecamp.org/best-programming-languages-to-learn-in-2018-ultimate-guide-bfc93e615b35), [4](https://www.edureka.co/blog/python-interesting-facts-you-need-to-know/)  
+Why Python?  [1](https://www.tiobe.com/tiobe-index/), [2](https://hackr.io/blog/best-programming-languages-to-learn-2020-jobs-future), [3](https://www.computer.org/publications/tech-news/trends/programming-languages-you-should-learn-in-2020), [4](https://www.edureka.co/blog/python-interesting-facts-you-need-to-know/)  
 [PLs history](https://en.wikipedia.org/wiki/History_of_programming_languages)  
 [PLs timeline](https://en.wikipedia.org/wiki/Timeline_of_programming_languages)  
 [PLs paradigms](https://en.m.wikipedia.org/wiki/Programming_paradigm)  
